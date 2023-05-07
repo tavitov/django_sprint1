@@ -47,14 +47,13 @@ posts = [
 
 def index(request):
     template = 'blog/index.html'
-    r_posts = posts[::-1]
-    context = {'posts_list': r_posts}
+    context = {'posts_list': posts[::-1]}
     return render(request, template, context)
 
 
-def post_detail(request, pk):
+def post_detail(request, post_id):
     template = 'blog/detail.html'
-    context = {'post': posts[pk]}
+    context = {'post': posts[post_id]}
     return render(request, template, context)
 
 
