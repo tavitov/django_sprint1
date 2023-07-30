@@ -52,8 +52,8 @@ def index(request):
     return render(request, template, context)
 
 
-def post_detail(request, post_id): 
-    template = 'blog/detail.html' 
+def post_detail(request, post_id):
+    template = 'blog/detail.html'
     context = {'post': None}
     for post in posts:
         if post['id'] == post_id:
