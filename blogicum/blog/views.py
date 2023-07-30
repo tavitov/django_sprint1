@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.http import Http404
 
 
 posts = [
@@ -51,9 +52,15 @@ def index(request):
     return render(request, template, context)
 
 
-def post_detail(request, post_id):
-    template = 'blog/detail.html'
-    context = {'post': posts[post_id]}
+def post_detail(request, post_id): 
+    template = 'blog/detail.html' 
+    context = {'post': None}
+    for post in posts:
+        if post['id'] == post_id:
+            context['post'] = post
+            break
+    if context['post'] is None:
+        raise Http404('Post does not exist')
     return render(request, template, context)
 
 
