@@ -60,7 +60,7 @@ def post_detail(request, post_id):
             context['post'] = post
             break
     if context['post'] is None:
-        raise Http404('Post does not exist')
+        raise Http404(f'Post with id {post_id} does not exist')
     return render(request, template, context)
 
 
